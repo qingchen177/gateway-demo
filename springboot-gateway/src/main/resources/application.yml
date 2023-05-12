@@ -1,0 +1,35 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /
+# spring 相关配置
+spring:
+  main:
+    allow-bean-definition-overriding:
+      true
+    web-application-type: reactive
+  application:
+    name: springboot-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true   #开启Eureka服务发现
+          lower-case-service-id: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8083/eureka/ #Eureka Server地址
+  instance:
+    appname: springboot-gateway
+    prefer-ip-address: true
+# 模块配置
+gisquest-gateway:
+
+logging:
+  level:
+    com.gisquest: info
+    com.springboot.test.mapper: debug
+  file:
+    name: log/MineGateway.log
+

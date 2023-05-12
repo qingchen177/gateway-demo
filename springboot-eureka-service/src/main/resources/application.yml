@@ -1,0 +1,39 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /
+# spring 相关配置
+spring:
+  main:
+    allow-bean-definition-overriding:
+      true
+  application:
+    name: springboot-eureka-service
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+eureka:
+  client:
+    #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: false
+    #表示是否向eureka注册服务，即在自己的eureka中注册自己，默认为true，此处应该设置为false，本身就是服务端，不向自己注册自己
+    register-with-eureka: false
+    service-url:
+      #注册中心地址
+      defaultZone:  http://localhost:8083/
+  instance:
+    appname: springboot-eureka-service
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 10000
+# 模块配置
+gisquest-service:
+
+logging:
+  level:
+    com.gisquest: info
+    com.springboot.test.mapper: debug
+  file:
+    name: log/MineEureka.log
+

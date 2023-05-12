@@ -1,0 +1,36 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /
+#spring 相关配置
+spring:
+  main:
+    allow-bean-definition-overriding:
+      true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  application:
+    name: springboot-eureka-client
+eureka:
+  instance:
+    appname: springboot-eureka-client
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    enabled: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8083/eureka/
+
+#模块配置
+gisquest-client:
+
+logging:
+  level:
+    com.gisquest: info
+    com.springboot.test.mapper: debug
+  file:
+    name: log/MineEurekaClient.log
+
